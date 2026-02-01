@@ -3,3 +3,11 @@ uvicorn
 python-multipart
 SpeechRecognition
 pydub
+requests
+beautifulsoup4
+playwright
+nest_asyncio
+langchain
+langchain-community
+chromadb
+sentence-transformers

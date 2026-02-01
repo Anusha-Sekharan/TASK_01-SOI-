@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 interface Metric {
-    performance: number;
-    accessibility: number;
-    seo: number;
-    pwa: number;
+    usability: number;
+    trust_score: number;
+    clarity: number;
+    conversion_potential: number;
 }
 
 interface Issue {
@@ -61,9 +61,10 @@ const ConversionForm: React.FC<{ showGuide: boolean; resetTrigger: number }> = (
             const data = await res.json();
             setResult(data);
             setStatus('success');
-        } catch (err) {
+        } catch (err: any) {
             console.error(err);
             setStatus('error');
+            setError(err.message || 'Audit failed. Please ensure backend is running.');
         }
     };
 
@@ -165,10 +166,10 @@ const ConversionForm: React.FC<{ showGuide: boolean; resetTrigger: number }> = (
                                                     {key} DIAGNOSTICS
                                                 </h4>
                                                 <p className="font-mono text-[10px] text-slate-300 leading-relaxed">
-                                                    {key === 'seo' && "Search Engine Optimization: Visibility & organic ranking potential."}
-                                                    {key === 'pwa' && "Progressive Web App: Offline capabilities & installability."}
-                                                    {key === 'accessibility' && "Accessibility: Usability for users with diverse needs."}
-                                                    {key === 'performance' && "Performance: Loading speed, interactivity, and visual stability."}
+                                                    {key === 'usability' && "Usability: User Experience friction and intuitiveness."}
+                                                    {key === 'trust_score' && "Trust Score: Credibility signals and security markers."}
+                                                    {key === 'clarity' && "Clarity: content readability and message effectiveness."}
+                                                    {key === 'conversion_potential' && "Conversion Potential: Call-to-action strength."}
                                                 </p>
                                                 {/* Pixel Tail pointing DOWN to the button */}
                                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#111] border-b border-r border-lime-400/30 transform rotate-45"></div>
